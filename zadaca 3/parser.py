@@ -44,7 +44,12 @@ class Parser:
         # oznake
         self._labels = {}
         self._variables = {}
-        
+
+        self._parse_macros()
+        if self._flag == False:
+            Parser._error("COM", self._line, self._errm)
+            return
+            
         self._parse_symbols()
         if self._flag == False:
             Parser._error("SYM", self._line, self._errm)
@@ -55,10 +60,6 @@ class Parser:
             Parser._error("COM", self._line, self._errm)
             return
         
-        self._parse_macros()
-        if self._flag == False:
-            Parser._error("COM", self._line, self._errm)
-            return
             
         # Na kraju parsiranja strojni kod upisujemo u ".hack" datoteku.
         try:
