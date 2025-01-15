@@ -41,25 +41,25 @@ class Parser:
             Parser._error("PL", self._line, self._errm)
             return
         
-        # oznake
+        # parsiramo makro naredbe
+        self._parse_macros()
+        if self._flag == False:
+            Parser._error("MACRO", self._line, self._errm)
+            return
+        
         self._labels = {}
         self._variables = {}
 
-        self._parse_macros()
-        if self._flag == False:
-            Parser._error("COM", self._line, self._errm)
-            return
-            
+        # parsiramo simbole iz koda
         self._parse_symbols()
         if self._flag == False:
             Parser._error("SYM", self._line, self._errm)
             return
-            
+        
         self._parse_commands()
         if self._flag == False:
             Parser._error("COM", self._line, self._errm)
             return
-        
             
         # Na kraju parsiranja strojni kod upisujemo u ".hack" datoteku.
         try:
@@ -82,7 +82,7 @@ class Parser:
     def _read_lines(self):
         n = 0
         for line in self._file:
-            self._lines.append((line, n, n));
+            self._lines.append((line + "\n", n, n))
             n += 1
 
     # Funkcija upisuje parsirane linije u output ".hack" datoteku.
@@ -110,8 +110,14 @@ class Parser:
             if (self._flag == False):
                 break
             if (len(newline) > 0):
-                newlines.append((newline, i, o))
-                i += 1
+                if "\n" in newline:
+                    for part in newline.split(): 
+                        if part != '':
+                            newlines.append((part, i, o))
+                            i += 1
+                else:
+                    newlines.append((newline, i, o))
+                    i += 1
         self._lines = newlines
         
     @staticmethod
