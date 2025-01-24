@@ -1,0 +1,23 @@
+class Main {
+    function void main() {
+        var int a,b,c,d, e, f, g, h, i;
+
+        let a = 24;
+        let b = 3;
+        let e = 5;
+        let f = 8;
+        let g = 19;
+        let h = 7;
+        let c = DivAndMod.div(a, b);
+        let d = DivAndMod.mult(e,f);
+        let i = DivAndMod.mod(g,h);
+
+        do Output.printInt(c);
+        do Output.println();
+        do Output.printInt(d);
+        do Output.println();
+        do Output.printInt(i);
+
+        return;
+    }
+}
