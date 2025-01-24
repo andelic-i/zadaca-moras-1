@@ -1,3 +1,11 @@
+push constant 5    // a = 5
+push constant 4    // b = 4
+push constant 6    // c = 6
+call Min.min 3
+pop static 0
+label END
+goto END
+// funkcija
 function Min.min 1
 push argument 0
 pop local 0
