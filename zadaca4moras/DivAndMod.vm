@@ -1,0 +1,65 @@
+function DivAndMod.div 2
+push constant 0
+pop local 0
+push argument 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push argument 1
+gt
+push local 1
+push argument 1
+eq
+or
+not
+if-goto WHILE_END0
+push local 0
+push constant 1
+add
+pop local 0
+push local 1
+push argument 1
+sub
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push local 0
+return
+function DivAndMod.mult 2
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 0
+push argument 0
+lt
+not
+if-goto WHILE_END0
+push local 0
+push constant 1
+add
+pop local 0
+push argument 1
+push local 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push local 1
+return
+function DivAndMod.mod 3
+push argument 0
+push argument 1
+call DivAndMod.div 2
+pop local 0
+push local 0
+push argument 1
+call DivAndMod.mult 2
+pop local 1
+push argument 0
+push local 1
+sub
+pop local 2
+push local 2
+return
