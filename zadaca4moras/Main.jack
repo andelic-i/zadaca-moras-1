@@ -1,6 +1,6 @@
 class Main {
     function void main() {
-        var int a,b,c,d, e, f, g, h, i;
+        var int a,b,c,d, e, f, g, h, i; // Ovaj sam zadatak napravio preko jacka i tu mozete provjeriti funkcije i vidjeti da rade
 
         let a = 24;
         let b = 3;
