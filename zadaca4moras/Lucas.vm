@@ -1,3 +1,11 @@
+push constant 5   // poziv na neki broj
+
+call Lucas.lucas 1
+pop static 0
+label END
+goto END
+
+// funkcija
 function Lucas.lucas 0
 push argument 0
 push constant 0
