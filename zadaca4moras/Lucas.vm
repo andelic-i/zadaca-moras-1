@@ -1,0 +1,39 @@
+function Lucas.lucas 0
+push argument 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 2
+return
+label IF_FALSE0
+push argument 0
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+return
+label IF_FALSE1
+push argument 0
+push constant 1
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push argument 0
+push constant 1
+sub
+call Lucas.lucas 1
+push argument 0
+push constant 2
+sub
+call Lucas.lucas 1
+add
+return
+label IF_FALSE2
+push argument 0
+call Lucas.lucas 1
+return
