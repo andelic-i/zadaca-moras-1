@@ -1,0 +1,41 @@
+class DivAndMod
+{
+    function int div(int m, int n)
+    {
+        var int a, b;
+        let a = 0;
+        let b = m;
+
+        while ((b > n) | (b = n))
+        {
+            let a = a + 1;
+            let b = b - n;
+        }
+        return a;
+    }
+
+    function int mult(int m, int n)
+    {
+        var int a, b;
+        let a = 0;
+        let b = 0;
+        while (a < m)
+        {
+            let a = a + 1;
+            let b = n + b;
+        }
+        return b;
+    }
+    function int mod(int m, int n)  
+    {
+        var int b, c, d;
+
+        let b = DivAndMod.div(m, n); 
+
+        let c = DivAndMod.mult(b, n); 
+        let d = m - c;  
+        return d;
+    }
+    
+    
+}
